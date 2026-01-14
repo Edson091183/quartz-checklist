@@ -1,0 +1,280 @@
+/* Quartz Checklist Studio - UI limpa (v3.2)
+   Foco: reduzir poluição visual, deixar a lista lateral legível e o editor confortável.
+*/
+
+:root{
+  /* Fundo geral */
+  --bg0:#0a1224;
+  --bg1:#122048;
+
+  /* Painéis */
+  --panel:#101c3a;
+  --panel2:#0e1833;
+
+  /* Bordas */
+  --border:rgba(255,255,255,.12);
+
+  /* Texto */
+  --text:#e9ecf5;        /* NÃO branco puro */
+  --muted:#a7b0d6;
+
+  /* Ações */
+  --accent:#3b74ff;
+  --danger:#e24c4c;
+
+  --radius:14px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Arial, "Segoe UI", sans-serif;
+  color:var(--text);
+  background: radial-gradient(circle at top, var(--bg1), var(--bg0));
+}
+
+.muted{color:var(--muted)}
+.center{text-align:center}
+.justify{text-align:justify}
+
+/* ========== LOGIN ========== */
+.login-container{
+  max-width:360px;
+  margin:90px auto;
+  background:var(--panel);
+  padding:22px;
+  border-radius:var(--radius);
+  box-shadow:0 20px 60px rgba(0,0,0,.6);
+  text-align:center;
+  border:1px solid rgba(255,255,255,.06);
+}
+.login-logo{max-width:190px;width:75%;height:auto;display:block;margin:0 auto 12px}
+.login-title{margin:0;font-size:26px;letter-spacing:.5px}
+.login-subtitle{margin:6px 0 16px 0;color:var(--muted)}
+
+.login-form{display:grid;gap:10px;text-align:left}
+.login-form label{font-size:12px;color:var(--muted)}
+
+input, textarea{
+  width:100%;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#ffffff;
+  color:#000000;
+}
+textarea{min-height:78px;resize:vertical}
+input::placeholder, textarea::placeholder{color:#7f8ab8}
+
+.btn-primary,.btn-secondary,.btn-light,.btn-danger,button.icon-btn{
+  border:0;
+  border-radius:12px;
+  padding:10px 12px;
+  cursor:pointer;
+  color:#fff;
+}
+.btn-primary{background:linear-gradient(135deg,#2b66f6,#1f4fd8)}
+.btn-secondary{background:rgba(255,255,255,.10)}
+.btn-light{background:rgba(255,255,255,.08)}
+.btn-danger{background:linear-gradient(135deg,#ff4d4d,var(--danger))}
+.btn-primary:hover,.btn-secondary:hover,.btn-light:hover,.btn-danger:hover,button.icon-btn:hover{opacity:.92}
+
+.error-text{color:#ff6b6b;font-size:13px;margin:0}
+
+/* ========== APP LAYOUT ========== */
+.app-shell{min-height:100%;display:flex;flex-direction:column}
+
+.app-topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 16px;
+  background:var(--panel);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.topbar-left .brand{font-weight:700;font-size:16px}
+.topbar-left .brand-sub{font-size:12px;color:var(--muted);margin-top:2px}
+.topbar-right{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+
+.app-main{flex:1;display:flex;gap:14px;padding:14px;min-height:0}
+
+/* Sidebar */
+.sidebar{
+  width:360px;
+  max-width:360px;
+  min-width:300px;
+  background:var(--panel2);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:var(--radius);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+}
+.sidebar-header{padding:12px;border-bottom:1px solid rgba(255,255,255,.08)}
+.search{width:100%}
+.sidebar-actions{margin-top:10px;display:flex;justify-content:flex-end}
+
+.checklist-list{
+  padding:10px;
+  overflow:auto;
+  min-height:0;
+}
+
+.chk-card{
+  border:1px solid rgba(255,255,255,.10);
+  background:#15245a;
+  border-radius:12px;
+  padding:12px;
+  margin-bottom:10px;
+  cursor:pointer;
+}
+
+.chk-card:hover{background:rgba(13,23,51,.78)}
+.chk-card.active{
+  outline:2px solid var(--accent);
+  background:#1a2f73;
+}
+
+.chk-title{
+  font-weight:700;
+  font-size:14px;
+  line-height:1.2;
+  letter-spacing:.2px;
+}
+.chk-sub{
+  margin-top:4px;
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* Editor */
+.editor{
+  flex:1;
+  background:var(--panel2);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:var(--radius);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  min-height:0;
+}
+
+.editor-header{
+  padding:12px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+.editor-header h2{margin:0;font-size:16px}
+.editor-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+
+.checklist-name{margin-top:8px}
+
+.table-wrap{padding:10px;overflow:auto;min-height:0}
+
+.grid{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  font-size:13px;
+}
+.grid th,.grid td{
+  border:1px solid rgba(255,255,255,.10);
+  padding:8px;
+  vertical-align:top;
+}
+.grid th{
+  background:rgba(255,255,255,.10);
+  color:#ffffff;
+  font-weight:600;
+  text-align:left;
+}
+
+.grid td{
+  background:rgba(255,255,255,.02);
+}
+
+/* Larguras controladas */
+.col-ord{
+  width:80px;
+  min-width:80px;
+}
+.col-model{
+  width:140px;
+  min-width:140px;
+}
+.col-obs{
+  width:200px;
+  min-width:200px;
+}
+.col-org{
+  width:200px;
+  min-width:200px;
+}
+.col-act{
+  width:220px;
+  min-width:220px;
+}
+
+/* COLUNA TEXTO (PRIORITÁRIA / EXPANSÍVEL) */
+.grid th:nth-child(2),
+.grid td:nth-child(2){
+  width:auto;
+  min-width:420px;
+}
+
+.cell-input,
+.cell-text{
+  width:100%;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:#162554;
+  color:var(--text);
+  line-height:1.5;
+}
+
+.row-actions{display:flex;gap:8px;flex-wrap:wrap}
+button.icon-btn{
+  background:rgba(255,255,255,.10);
+  padding:8px 10px;
+  border-radius:10px;
+}
+
+.row-off{opacity:.55}
+
+.hint{padding:0 12px 12px 12px;font-size:12px}
+
+/* Responsivo */
+@media (max-width: 980px){
+  .app-main{flex-direction:column}
+  .sidebar{width:100%;max-width:none;min-width:0}
+}
+
+/* Ajustes de alinhamento na grade */
+.grid th.col-ord, .grid td.col-ord,
+.grid th.col-model, .grid td.col-model{
+  text-align: center;
+}
+
+.grid td.col-texto{
+  text-align: justify;
+}
+/* ===== LINHA DE SEÇÃO (EDITÁVEL E VISUAL) ===== */
+.row-secao td {
+  background: linear-gradient(90deg, #1f3c88, #162554);
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.row-secao textarea {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+

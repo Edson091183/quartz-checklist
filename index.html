@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quartz | Biblioteca de Checklists</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div id="login-screen" class="login-container">
+    <img id="login-logo" class="login-logo" src="assets/logo.png" alt="Quartz"
+      onerror="this.style.display='none'"/>
+    <h1 class="login-title">Quartz</h1>
+    <p class="login-subtitle">Biblioteca de Checklists</p>
+
+    <div class="login-form">
+      <label for="login-username">Usuário</label>
+      <input id="login-username" type="text" autocomplete="username" />
+
+      <label for="login-password">Senha</label>
+      <input id="login-password" type="password" autocomplete="current-password" />
+
+      <button id="login-btn" class="btn-primary" type="button">Entrar</button>
+      <p id="login-error" class="error-text" style="display:none;"></p>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div id="app-screen" class="app-shell" style="display:none;">
+    <header class="app-topbar">
+      <div class="topbar-left">
+        <div class="brand">Quartz Gestão Pública</div>
+        <div class="brand-sub">Biblioteca de Checklists (abas do Excel)</div>
+      </div>
+      <div class="topbar-right">
+        <button id="btn-export-pdf" class="btn-secondary" type="button">Gerar PDF</button>
+        <button id="btn-export-all" class="btn-secondary" type="button">Gerar PDFs (todos)</button>
+        <button id="btn-logout" class="btn-danger" type="button">Sair</button>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <input id="search" class="search" placeholder="Buscar (nome, texto ou nº do modelo)..." />
+          <div class="sidebar-actions">
+            <button id="btn-reset" class="btn-light" type="button">Recarregar do Excel (base)</button>
+          </div>
+        </div>
+
+        <div id="checklist-list" class="checklist-list"></div>
+      </aside>
+
+      <section class="editor">
+        <div class="editor-header">
+          <div>
+            <h2 id="editor-title">Checklist</h2>
+            <input id="checklist-name" class="checklist-name" placeholder="Nome do checklist" />
+            <div id="editor-subtitle" class="muted"></div>
+          </div>
+          <div class="editor-actions">
+            <button id="btn-add-section" class="btn-light" type="button">+ Seção</button>
+            <button id="btn-add-item" class="btn-light" type="button">+ Item</button>
+            <button id="btn-save" class="btn-primary" type="button">Salvar</button>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table class="grid">
+            <thead>
+              <tr>
+                <th class="col-ord center">Ordem</th>
+                <th>Texto</th>
+                <th class="col-model center">Nº do modelo</th>
+                <th class="col-obs">Observação</th>
+                <th class="col-org">Órgãos cadastrados</th>
+                <th class="col-act">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+
+        <div class="hint muted">
+          Importante: a importação preserva exatamente a numeração e o “Nº do modelo”. Nada é renumerado automaticamente.
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="vendor/jspdf.umd.min.js"></script>
+  <script src="login.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
